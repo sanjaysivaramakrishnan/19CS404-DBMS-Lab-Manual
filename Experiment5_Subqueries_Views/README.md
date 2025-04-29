@@ -42,7 +42,8 @@ DROP VIEW view_name;
 
 
 ```sql
-
+select * from CUSTOMERS
+where ADDRESS = 'Delhi';
 ```
 
 **Output:**
@@ -56,7 +57,11 @@ DROP VIEW view_name;
 
 
 ```sql
-
+SELECT s.salesman_id, s.name
+FROM salesman s
+JOIN customer c ON s.salesman_id = c.salesman_id
+GROUP BY s.salesman_id, s.name
+HAVING COUNT(c.customer_id) > 1;
 ```
 
 **Output:**
@@ -70,7 +75,10 @@ DROP VIEW view_name;
 
 
 ```sql
-
+SELECT o.ord_no, o.purch_amt, o.ord_date, o.customer_id, o.salesman_id
+FROM orders o
+JOIN salesman s ON o.salesman_id = s.salesman_id
+WHERE s.name='Paul Adam';
 ```
 
 **Output:**
@@ -84,7 +92,13 @@ DROP VIEW view_name;
 
 
 ```sql
-
+SELECT o.ord_no, o.purch_amt, o.ord_date, o.salesman_id
+FROM orders o
+JOIN salesman s ON o.salesman_id = s.salesman_id
+WHERE s.commission = (
+    SELECT MAX(commission)
+    FROM salesman
+);
 ```
 
 **Output:**
@@ -98,7 +112,8 @@ DROP VIEW view_name;
 
 
 ```sql
-
+select * from CUSTOMERS
+where SALARY = 1500;
 ```
 
 **Output:**
@@ -112,7 +127,13 @@ DROP VIEW view_name;
 
 
 ```sql
-
+SELECT ord_no, purch_amt, ord_date, customer_id, salesman_id
+FROM ORDERS
+WHERE purch_amt > (
+    SELECT AVG(purch_amt)
+    FROM ORDERS
+    WHERE ord_date ='2012-10-10'
+);
 ```
 
 **Output:**
@@ -126,7 +147,13 @@ DROP VIEW view_name;
 
 
 ```sql
-
+SELECT name, city
+FROM customer
+WHERE city IN (
+    SELECT city
+    FROM customer
+    WHERE id IN (3,7)
+);
 ```
 
 **Output:**
@@ -139,7 +166,13 @@ DROP VIEW view_name;
 
 
 ```sql
-
+SELECT student_name, grade
+FROM GRADES g1
+WHERE grade = (
+    SELECT MIN(grade)
+    FROM GRADES g2
+    WHERE g2.subject = g1.subject
+);
 ```
 
 **Output:**
@@ -152,7 +185,13 @@ DROP VIEW view_name;
 ![Screenshot 2025-04-29 141324](https://github.com/user-attachments/assets/2a6b5c7d-fda0-4984-8441-0a84af9465b1)
 
 ```sql
-
+SELECT *
+FROM customer
+WHERE city <> (
+    SELECT city
+    FROM customer
+    WHERE id = (SELECT MAX(id) FROM customer)
+);
 ```
 
 **Output:**
@@ -166,7 +205,13 @@ DROP VIEW view_name;
 
 
 ```sql
-
+SELECT *
+FROM Grades g
+WHERE grade = (
+    SELECT MAX(grade)
+    FROM Grades
+    WHERE subject = g.subject
+);
 ```
 
 **Output:**
