@@ -217,7 +217,8 @@ WHERE grade = (
 **Output:**
 ![Screenshot 2025-04-29 141348](https://github.com/user-attachments/assets/2c7782ad-7eff-45e2-9218-210a5691d27f)
 
-
+#### Name : Sanjay Sivaramakrishnan M
+#### Reg no : 212223240151
 
 ## RESULT
 Thus, the SQL queries to implement subqueries and views have been executed successfully.
