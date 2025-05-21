@@ -20,7 +20,6 @@ Design a database to manage students, instructors, programs, courses, and studen
 - Add support for prerequisites (some courses require others).
 
 ---
-# ER Diagram Submission - P.Abirami
 
 ## Scenario Chosen:
 University 
